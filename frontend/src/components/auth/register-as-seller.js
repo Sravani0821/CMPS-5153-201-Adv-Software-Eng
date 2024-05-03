@@ -140,7 +140,7 @@ export default function RegisterAsSeller() {
                 datepicker
                 type="text"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-                placeholder="Date of birth"
+                placeholder="YYYY-MM-DD"
                 required
                 value={dateOfBirth}
                 onChange={(e) => setDateOfBirth(e.target.value)}
