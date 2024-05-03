@@ -37,6 +37,8 @@ urlpatterns = [
     path("bidder/", include("bidder.urls")),
     # Item App
     path("item/", include("item.urls")),
+    # contact App
+    path("contact/", include("contact.urls")),
 ]
 
 # configuring path for static and media
