@@ -2,10 +2,18 @@ import React, { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isAuth, setIsAuth] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem("access_token") !== null) {
       setIsAuth(true);
+      setUserData(JSON.parse(localStorage.getItem("user_data")));
+    }
+    if (localStorage.getItem("access_token") !== null) {
+      setIsAuth(true);
+      setIsAuth(true);
+      setUserData(JSON.parse(localStorage.getItem("user_data")));
+      setUserData(JSON.parse(localStorage.getItem("user_data")));
     }
   }, [isAuth]);
 
@@ -50,6 +58,50 @@ export default function Navbar() {
                 aria-current="page"
               >
                 Store
+              </a>
+            </li>
+            <li>
+              <a
+                href="/lottery"
+                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                aria-current="page"
+              >
+                Lottery Based Auction
+              </a>
+            </li>
+            {isAuth && userData && (
+              <li>
+                {isAuth && (
+                  <a
+                    href={
+                      userData.type === "seller"
+                        ? "/dashboard/seller"
+                        : "/dashboard/bidder"
+                    }
+                    className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                    aria-current="page"
+                  >
+                    Dashboard
+                  </a>
+                )}
+              </li>
+            )}
+            <li>
+              <a
+                href="/notifications"
+                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                aria-current="page"
+              >
+                Notifications
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact"
+                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                aria-current="page"
+              >
+                Contact
               </a>
             </li>
             <li>
