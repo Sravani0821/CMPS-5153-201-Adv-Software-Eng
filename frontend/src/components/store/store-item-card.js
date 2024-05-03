@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export default function StoreItemCard({ item }) {
   return (
     <div class="group relative">
@@ -17,6 +19,9 @@ export default function StoreItemCard({ item }) {
           </a>
         </h3>
         <p class="mt-1 text-sm text-gray-500">$ {item.opening_bid}</p>
+        <p class="mt-1 text-sm text-gray-500">
+          Auction ends {moment(item.auction_end).fromNow()}
+        </p>
       </div>
     </div>
   );

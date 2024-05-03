@@ -4,9 +4,13 @@ import StoreItemCard from "./store-item-card";
 
 export default function StoreHome() {
   const [storeItems, setStoreItems] = useState(null);
+  const [allowPost, setAllowPost] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("access_token")) {
+      if (JSON.parse(localStorage.getItem("user_data")).type === "seller") {
+        setAllowPost(true);
+      }
       async function fetchStoreItems() {
         await axios
           .get("/item/store/")
@@ -35,6 +39,17 @@ export default function StoreHome() {
           {storeItems.map((item) => (
             <StoreItemCard key={item.id} item={item} />
           ))}
+        </div>
+      )}
+
+      {allowPost && (
+        <div class="mt-10 flex items-center justify-center">
+          <a
+            href="/store/create/"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Post New Item
+          </a>
         </div>
       )}
     </div>
